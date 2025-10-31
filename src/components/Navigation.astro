@@ -1,0 +1,56 @@
+---
+// Navigation component for Pet Toy Fun Zone
+const siteName = "Pet Toy Fun Zone";
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Customer Reviews", href: "/customer-reviews" },
+  { name: "Blog", href: "/blog" }
+];
+---
+
+<nav class="bg-gradient-to-r from-[#FF9500] to-[#00D4AA] shadow-lg">
+  <div class="container mx-auto px-4 py-3">
+    <div class="flex justify-between items-center">
+      <!-- Logo/Brand -->
+      <a href="/" class="text-2xl font-bold text-white drop-shadow-md">{siteName}</a>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex gap-6">
+        {navLinks.map((link) => (
+          <a 
+            href={link.href} 
+            class="text-white font-medium hover:bg-white/20 px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105"
+          >
+            {link.name}
+          </a>
+        ))}
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button 
+          class="text-white text-xl p-2 rounded-lg hover:bg-white/20 transition-colors"
+          onclick="this.nextElementSibling.classList.toggle('hidden')"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="hidden absolute right-4 mt-2 bg-white rounded-lg shadow-xl py-2 w-48 z-10">
+          {navLinks.map((link) => (
+            <a 
+              href={link.href} 
+              class="block px-4 py-2 text-gray-800 hover:bg-[#00D4AA] hover:text-white rounded-md"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style is:global>
+  @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+</style>
